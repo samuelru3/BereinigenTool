@@ -22,6 +22,7 @@ public class Gui {
                     FileUtils.cleanDirectory(new File("C:\\Users\\ATV-Admin\\Downloads"));
                 } catch (IOException ex) {
                     ex.printStackTrace();
+
                 }
             }
         });
