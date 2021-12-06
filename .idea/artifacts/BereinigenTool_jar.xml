@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="BereinigenTool:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/BereinigenTool_jar</output-path>
+    <root id="archive" name="BereinigenTool.jar">
+      <element id="module-output" name="BereinigenTool" />
+      <element id="library" level="project" name="org.apache.commons.io" />
+    </root>
+  </artifact>
+</component>

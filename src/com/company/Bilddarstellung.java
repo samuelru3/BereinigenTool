@@ -15,7 +15,7 @@ public class Bilddarstellung extends JFrame {
         setContentPane(panel);
     }
 
-    public static void main(String[] args) {
+    public static void main() {
         Bilddarstellung ml = new Bilddarstellung();
         ml.setSize(552, 406);
         ml.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
