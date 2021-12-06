@@ -1,7 +1,8 @@
 package com.company;
 
 import javax.swing.*;
-import java.awt.*;
+//ToDo Einträge zum leeren andere Verzeichnisse erstellen
+//ToDo Desktop Symbole nach Löschen wieder hinzufügen
 
 public class Main {
 
