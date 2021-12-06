@@ -1,9 +1,10 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="BereinigenTool:jar">
+  <artifact type="jar" build-on-make="true" name="BereinigenTool:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/BereinigenTool_jar</output-path>
-    <root id="archive" name="BereinigenTool.jar">
-      <element id="module-output" name="BereinigenTool" />
+    <root id="archive" name="BereinigenTool_jar.jar">
       <element id="library" level="project" name="org.apache.commons.io" />
+      <element id="module-output" name="BereinigenTool" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/com/company/besenIcon.jpg" />
     </root>
   </artifact>
 </component>
