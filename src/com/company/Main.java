@@ -7,7 +7,8 @@ import javax.swing.*;
 public class Main {
 
     public static void main(String[] args) {
-        ImageIcon icon = new ImageIcon("C:\\Users\\ATV-Admin\\IdeaProjects\\BereinigenTool\\src\\com\\company\\besenIcon.jpg");
+
+        ImageIcon icon = new ImageIcon("C:\\Windows\\besenIcon.jpg");
         JFrame frame = new JFrame("PC Bereinigen");
         frame.setContentPane(new Gui().mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -18,3 +19,9 @@ public class Main {
         frame.setVisible(true);
     }
 }
+
+
+//    com.sun.security.auth.module.NTSystem NTSystem = new
+//            com.sun.security.auth.module.NTSystem();
+//        System.out.println(NTSystem.getName());
+//        "C:\\Users\\"+NTSystem.getName()+"\\Desktop\\besenIcon.jpg"
