@@ -1,16 +1,27 @@
 package com.company;
 
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import static com.company.apacheCommons.cleanDirectory;
+
+
 public class bereinigung {
+    static com.sun.security.auth.module.NTSystem NTSystem = new
+            com.sun.security.auth.module.NTSystem();
+    static String username = NTSystem.getName();
+
     public static void main() {
         try {
-//Download Ordner Leeren
-            cleanDirectory(new File("C:\\Users\\ATV-Admin\\Downloads"));
-
-            //Programm beenden
+            /*Download Ordner Leeren*/
+            cleanDirectory(new File("C:\\Users\\" + username + "\\Downloads"));
+            /*Desktop Aufräumen*/
+            desktopAufraeumen();
+            /*Papierkorb Ordner Leeren*/
+            cleanDirectory(new File("C:\\$Recycle.Bin"));
+            /*Programm beenden*/
             System.exit(0);
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -18,61 +29,17 @@ public class bereinigung {
         }
     }
 
-    public static void cleanDirectory(File directory) throws IOException {
-        String message;
-        if (!directory.exists()) {
-            message = directory + " does not exist";
-            throw new IllegalArgumentException(message);
-        } else if (!directory.isDirectory()) {
-            message = directory + " is not a directory";
-            throw new IllegalArgumentException(message);
-        } else {
-            File[] files = directory.listFiles();
-            if (files == null) {
-                throw new IOException("Failed to list contents of " + directory);
-            } else {
-                IOException exception = null;
-
-                for (int i = 0; i < files.length; ++i) {
-                    File file = files[i];
-
-                    try {
-                        forceDelete(file);
-                    } catch (IOException var6) {
-                        exception = var6;
-                    }
-                }
-
-                if (null != exception) {
-                    throw exception;
-                }
-            }
-        }
-    }
-
-    public static void forceDelete(File file) throws IOException {
-        if (file.isDirectory()) {
-            deleteDirectory(file);
-        } else {
-            if (!file.exists()) {
-                throw new FileNotFoundException("File does not exist: " + file);
-            }
-
-            if (!file.delete()) {
-                String message = "Unable to delete file: " + file;
-                throw new IOException(message);
-            }
-        }
-
-    }
-
-    public static void deleteDirectory(File directory) throws IOException {
-        if (directory.exists()) {
-            cleanDirectory(directory);
-            if (!directory.delete()) {
-                String message = "Unable to delete directory " + directory + ".";
-                throw new IOException(message);
-            }
+    public static void desktopAufraeumen() throws IOException {
+        /*Desktop Ordner Leeren*/
+        cleanDirectory(new File("C:\\Users\\" + username + "\\Desktop"));
+        cleanDirectory(new File("C:\\Users\\Public\\Desktop"));
+        /*Dateien auf Desktop kopieren*/
+        File source = new File("C:\\Windows\\bereinigenTool\\Desktop");
+        File dest = new File("C:\\Users\\" + username + "\\Desktop");
+        try {
+            FileUtils.copyDirectory(source, dest);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
