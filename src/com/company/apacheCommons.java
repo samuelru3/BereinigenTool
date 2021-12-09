@@ -18,14 +18,14 @@ public class apacheCommons {
         String message;
         if (!directory.exists()) {
             message = directory + " does not exist";
-            throw new IllegalArgumentException(message);
+//            throw new IllegalArgumentException(message);
         } else if (!directory.isDirectory()) {
             message = directory + " is not a directory";
-            throw new IllegalArgumentException(message);
+//            throw new IllegalArgumentException(message);
         } else {
             File[] files = directory.listFiles();
             if (files == null) {
-                throw new IOException("Failed to list contents of " + directory);
+//                throw new IOException("Failed to list contents of " + directory);
             } else {
                 IOException exception = null;
 
@@ -54,7 +54,7 @@ public class apacheCommons {
 
             if (!file.delete()) {
                 String message = "Unable to delete file: " + file;
-                throw new IOException(message);
+//                throw new IOException(message);
             }
         }
 
@@ -65,7 +65,7 @@ public class apacheCommons {
             cleanDirectory(directory);
             if (!directory.delete()) {
                 String message = "Unable to delete directory " + directory + ".";
-                throw new IOException(message);
+//                throw new IOException(message);
             }
         }
     }
@@ -203,7 +203,7 @@ public class apacheCommons {
 
     private static void requireEqualSizes(File srcFile, File destFile, long srcLen, long dstLen) throws IOException {
         if (srcLen != dstLen) {
-            throw new IOException("Failed to copy full contents from '" + srcFile + "' to '" + destFile + "' Expected length: " + srcLen + " Actual: " + dstLen);
+//            throw new IOException("Failed to copy full contents from '" + srcFile + "' to '" + destFile + "' Expected length: " + srcLen + " Actual: " + dstLen);
         }
     }
 
