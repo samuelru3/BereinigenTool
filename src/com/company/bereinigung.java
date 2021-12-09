@@ -1,11 +1,9 @@
 package com.company;
 
-import org.apache.commons.io.FileUtils;
-
 import java.io.File;
 import java.io.IOException;
 
-import static com.company.apacheCommons.cleanDirectory;
+import static com.company.apacheCommons.*;
 
 public class bereinigung {
     static com.sun.security.auth.module.NTSystem NTSystem = new
@@ -55,12 +53,14 @@ public class bereinigung {
         /*Desktop Ordner Leeren*/
         cleanDirectory(new File("C:\\Users\\" + username + "\\Desktop"));
         cleanDirectory(new File("C:\\Users\\Public\\Desktop"));
+
+
         /*Dateien auf Desktop kopiert*/
         File source = new File("C:\\Windows\\bereinigenTool\\Desktop");
         File dest = new File("C:\\Users\\" + username + "\\Desktop");
-
+        desktopKopieren(source, dest);
         try {
-            FileUtils.copyDirectory(source, dest);
+            copyFile(source, dest);
         } catch (IOException e) {
             e.printStackTrace();
         }

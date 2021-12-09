@@ -1,5 +1,7 @@
 package com.company;
 
+import org.apache.commons.io.IOExceptionList;
+
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileNotFoundException;
@@ -14,6 +16,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class apacheCommons {
+
     public static void cleanDirectory(File directory) throws IOException {
         String message;
         if (!directory.exists()) {
@@ -222,10 +225,56 @@ public class apacheCommons {
 
     private static File requireFile(File file, String name) {
         Objects.requireNonNull(file, name);
+        System.out.println(file);
+        System.out.println(name);
         if (!file.isFile()) {
-            throw new IllegalArgumentException("Parameter '" + name + "' is not a file: " + file);
+            System.out.println("kein file");
+            return null;
+//            throw new IllegalArgumentException("Parameter '" + name + "' is not a file: " + file);
         } else {
             return file;
+        }
+    }
+
+    public static void desktopKopieren(File directory, File destDir) throws IOException {
+        File[] files = listFiles(directory, (FileFilter) null);
+        List<Exception> causeList = new ArrayList();
+        File[] var3 = files;
+        int var4 = files.length;
+
+        for (int var5 = 0; var5 < var4; ++var5) {
+            File file = var3[var5];
+
+            String string = file.toString();
+            String[] parts = string.split("\\\\");
+            String part1 = parts[0];
+            String part2 = parts[1];
+            String part3 = parts[2];
+            String part4 = parts[3];
+            String part5 = parts[4];
+            System.out.println("part 1: " + part1);
+            System.out.println("part 2: " + part2);
+            System.out.println("part 3: " + part3);
+            System.out.println("part 4: " + part4);
+            System.out.println("part 5: " + part5);
+
+
+            File zieldatei = new File(destDir + "\\\\" + part5);
+            System.out.println(zieldatei);
+
+
+            System.out.println(file);
+            try {
+                System.out.println("tryblock" + file);
+                copyFile(file, zieldatei);
+                zieldatei = destDir;
+            } catch (IOException var8) {
+                causeList.add(var8);
+            }
+        }
+
+        if (!causeList.isEmpty()) {
+            throw new IOExceptionList(directory.toString(), causeList);
         }
     }
 
